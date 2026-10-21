@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.1
+## 0.1.2
 
 First public release of the Terraform provider for SAP S/4HANA Cloud
 Communication Management.
