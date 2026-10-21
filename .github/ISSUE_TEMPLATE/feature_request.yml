@@ -1,0 +1,40 @@
+name: 💡 Feature request
+description: Suggest an improvement or a new feature
+title: "[FEATURE] "
+labels: [enhancement, needs-triage]
+body:
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      description: Please search to see if an issue already exists for the feature you would like.
+      options:
+        - label: I have searched the existing issues
+          required: true
+  - type: textarea
+    attributes:
+      label: What problem would this solve?
+      description: Describe the use case, e.g. the communication scenario or setup you want to automate.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Proposed solution
+      description: How you would like it to work, for example as a configuration snippet.
+      placeholder: |
+        ```hcl
+        resource "s4communication_..." "example" {
+        }
+        ```
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: SAP API
+      description: The SAP API, entity set or properties involved, if you know them.
+    validations:
+      required: false
+  - type: checkboxes
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to implement this myself

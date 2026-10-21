@@ -1,0 +1,10 @@
+version: 1.0.0
+description: SAP S/4HANA Cloud Communication Management provider for Terraform
+features:
+  - Communication systems, including inbound and outbound users
+  - Communication users
+  - Communication arrangements
+  - Import for all resources
+api_compatibility: SAP S/4HANA Cloud OData V4 communication management APIs (0001)
+terraform_compatibility: ">=1.0"
+go_version: "1.21+"

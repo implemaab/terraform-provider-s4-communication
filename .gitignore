@@ -1,0 +1,15 @@
+# Build output
+/terraform-provider-s4communication
+*.exe
+/dist/
+
+# Terraform working files
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+examples/*/terraform.tfvars
+
+# Output of make export
+/exported/

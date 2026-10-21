@@ -1,0 +1,3836 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Communication System",
+    "version": "1.0.1",
+    "description": "The service provides communication system details. Moreover, you can\tread and assign inbound users, outbound users and business partners."
+  },
+  "externalDocs": {
+    "description": "Business Documentation",
+    "url": "https://help.sap.com/http.svc/ahp2/SAP_S4HANA_CLOUD/2508.latest/EN/20/7171e0d1c44871b59289733b935d0d/frameset.htm"
+  },
+  "x-sap-api-type": "ODATAV4",
+  "x-sap-shortText": "Create, read, update and delete communication systems using this synchronous inbound service",
+  "x-sap-software-min-version": "2508",
+  "x-sap-ext-overview": [
+    {
+      "name": "Communication Scenario",
+      "values": [
+        {
+          "text": "Cloud Integration Automation Integration (SAP_COM_0A31)",
+          "format": "plain"
+        },
+        {
+          "text": "Communication Management Integration (SAP_COM_0A48)",
+          "format": "plain"
+        }
+      ]
+    },
+    {
+      "name": "Authentication Methods",
+      "values": [
+        {
+          "text": "x509",
+          "format": "plain"
+        }
+      ]
+    },
+    {
+      "name": "Service Group Name",
+      "values": [
+        {
+          "text": "APS_COM_CS_A4C_ODATA",
+          "format": "plain"
+        }
+      ]
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://{host}:{port}/sap/opu/odata4/sap/aps_com_cs_a4c_odata/srvd_a2x/sap/aps_com_cs_a4c_odata/0001",
+      "variables": {
+        "host": {
+          "default": ""
+        },
+        "port": {
+          "default": ""
+        }
+      }
+    },
+    {
+      "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata4/sap/aps_com_cs_a4c_odata/srvd_a2x/sap/aps_com_cs_a4c_odata/0001"
+    }
+  ],
+  "x-sap-extensible": {
+    "supported": "no"
+  },
+  "tags": [
+    {
+      "name": "Business Partners"
+    },
+    {
+      "name": "Communication Systems"
+    },
+    {
+      "name": "Inbound Users"
+    },
+    {
+      "name": "Outbound Users"
+    }
+  ],
+  "paths": {
+    "/BusinessPartners": {
+      "get": {
+        "summary": "Get entities from BusinessPartners",
+        "tags": [
+          "Business Partners"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "UUID desc",
+                  "CommunicationSystemUUID",
+                  "CommunicationSystemUUID desc",
+                  "ID",
+                  "ID desc",
+                  "Name",
+                  "Name desc",
+                  "SAP__Messages",
+                  "SAP__Messages desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "CommunicationSystemUUID",
+                  "ID",
+                  "Name",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "CommunicationSystem"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of BusinessPartnersType",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.BusinessPartnersType"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add new entity to BusinessPartners",
+        "tags": [
+          "Business Partners"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.BusinessPartnersType-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.BusinessPartnersType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/BusinessPartners/{UUID}": {
+      "parameters": [
+        {
+          "name": "UUID",
+          "in": "path",
+          "required": true,
+          "description": "Business Partner UUID",
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get entity from BusinessPartners by key",
+        "tags": [
+          "Business Partners"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "CommunicationSystemUUID",
+                  "ID",
+                  "Name",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "CommunicationSystem"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.BusinessPartnersType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update entity in BusinessPartners",
+        "tags": [
+          "Business Partners"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.BusinessPartnersType-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete entity from BusinessPartners",
+        "tags": [
+          "Business Partners"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/BusinessPartners/{UUID}/CommunicationSystem": {
+      "parameters": [
+        {
+          "name": "UUID",
+          "in": "path",
+          "required": true,
+          "description": "Business Partner UUID",
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get related CommunicationSystem",
+        "tags": [
+          "Business Partners",
+          "Communication Systems"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "ID",
+                  "Name",
+                  "Type",
+                  "Description",
+                  "TCPPort",
+                  "LogicalSystemID",
+                  "BusinessSystemID",
+                  "SAPClient",
+                  "HostName",
+                  "HostNameUI",
+                  "OwnerContactPersonName",
+                  "OwnerContactPersonPhone",
+                  "OwnerContactPersonEMail",
+                  "IsOwnSystem",
+                  "CipherSuites",
+                  "IsCipherSuiteDefault",
+                  "IsOAuth2IdentityProviderActive",
+                  "OAuth2IdentityProviderName",
+                  "OAuth2IdentityProviderUserLogonType",
+                  "OAuth2IdentityProviderCertificateSubject",
+                  "OAuth2IdentityProviderCertificateIssuer",
+                  "OAuth2IdentityProviderCertificatePublicKeyBase64",
+                  "OAuth2AuthorizationEndpoint",
+                  "OAuth2TokenEndpoint",
+                  "OAuth2Audience",
+                  "OAuth2RedirectURI",
+                  "IsSAPCloudConnectorActive",
+                  "SAPCloudConnectorLocationID",
+                  "IsRFCLoadBalancingActive",
+                  "RFCSAPSystemID",
+                  "RFCSAPSystemNumber",
+                  "RFCLogonGroup",
+                  "RFCMessageServerTargetHost",
+                  "IsRFCFastSerializationActive",
+                  "DestinationServiceUUID",
+                  "DestinationServiceName",
+                  "IsDefaultDestinationServiceActive",
+                  "IsHubSystem",
+                  "IsInboundOnly",
+                  "IsSAMLBearerAssertionProviderActive",
+                  "SAMLBearerAssertionProviderName",
+                  "SAMLBearerAssertionProviderCertificateSubject",
+                  "SAMLBearerAssertionProviderCertificateIssuer",
+                  "SAMLBearerAssertionProviderCertificatePublicKeyBase64",
+                  "SAMLBearerAssertionProviderUserLogonType",
+                  "CreatedAt",
+                  "CreatedBy",
+                  "ChangedAt",
+                  "ChangedBy",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "BusinessPartners",
+                  "InboundUsers",
+                  "OutboundUsers"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/CommunicationSystems": {
+      "get": {
+        "summary": "Get entities from CommunicationSystems",
+        "tags": [
+          "Communication Systems"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "UUID desc",
+                  "ID",
+                  "ID desc",
+                  "Name",
+                  "Name desc",
+                  "Type",
+                  "Type desc",
+                  "Description",
+                  "Description desc",
+                  "TCPPort",
+                  "TCPPort desc",
+                  "LogicalSystemID",
+                  "LogicalSystemID desc",
+                  "BusinessSystemID",
+                  "BusinessSystemID desc",
+                  "SAPClient",
+                  "SAPClient desc",
+                  "HostName",
+                  "HostName desc",
+                  "HostNameUI",
+                  "HostNameUI desc",
+                  "OwnerContactPersonName",
+                  "OwnerContactPersonName desc",
+                  "OwnerContactPersonPhone",
+                  "OwnerContactPersonPhone desc",
+                  "OwnerContactPersonEMail",
+                  "OwnerContactPersonEMail desc",
+                  "IsOwnSystem",
+                  "IsOwnSystem desc",
+                  "CipherSuites",
+                  "CipherSuites desc",
+                  "IsOAuth2IdentityProviderActive",
+                  "IsOAuth2IdentityProviderActive desc",
+                  "OAuth2IdentityProviderName",
+                  "OAuth2IdentityProviderName desc",
+                  "OAuth2IdentityProviderUserLogonType",
+                  "OAuth2IdentityProviderUserLogonType desc",
+                  "OAuth2IdentityProviderCertificatePublicKeyBase64",
+                  "OAuth2IdentityProviderCertificatePublicKeyBase64 desc",
+                  "OAuth2AuthorizationEndpoint",
+                  "OAuth2AuthorizationEndpoint desc",
+                  "OAuth2TokenEndpoint",
+                  "OAuth2TokenEndpoint desc",
+                  "OAuth2Audience",
+                  "OAuth2Audience desc",
+                  "OAuth2RedirectURI",
+                  "OAuth2RedirectURI desc",
+                  "IsSAPCloudConnectorActive",
+                  "IsSAPCloudConnectorActive desc",
+                  "SAPCloudConnectorLocationID",
+                  "SAPCloudConnectorLocationID desc",
+                  "IsRFCLoadBalancingActive",
+                  "IsRFCLoadBalancingActive desc",
+                  "RFCSAPSystemID",
+                  "RFCSAPSystemID desc",
+                  "RFCSAPSystemNumber",
+                  "RFCSAPSystemNumber desc",
+                  "RFCLogonGroup",
+                  "RFCLogonGroup desc",
+                  "RFCMessageServerTargetHost",
+                  "RFCMessageServerTargetHost desc",
+                  "IsRFCFastSerializationActive",
+                  "IsRFCFastSerializationActive desc",
+                  "DestinationServiceUUID",
+                  "DestinationServiceUUID desc",
+                  "DestinationServiceName",
+                  "DestinationServiceName desc",
+                  "IsDefaultDestinationServiceActive",
+                  "IsDefaultDestinationServiceActive desc",
+                  "IsHubSystem",
+                  "IsHubSystem desc",
+                  "IsInboundOnly",
+                  "IsInboundOnly desc",
+                  "IsSAMLBearerAssertionProviderActive",
+                  "IsSAMLBearerAssertionProviderActive desc",
+                  "SAMLBearerAssertionProviderName",
+                  "SAMLBearerAssertionProviderName desc",
+                  "SAMLBearerAssertionProviderCertificatePublicKeyBase64",
+                  "SAMLBearerAssertionProviderCertificatePublicKeyBase64 desc",
+                  "SAMLBearerAssertionProviderUserLogonType",
+                  "SAMLBearerAssertionProviderUserLogonType desc",
+                  "CreatedAt",
+                  "CreatedAt desc",
+                  "CreatedBy",
+                  "CreatedBy desc",
+                  "ChangedAt",
+                  "ChangedAt desc",
+                  "ChangedBy",
+                  "ChangedBy desc",
+                  "SAP__Messages",
+                  "SAP__Messages desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "ID",
+                  "Name",
+                  "Type",
+                  "Description",
+                  "TCPPort",
+                  "LogicalSystemID",
+                  "BusinessSystemID",
+                  "SAPClient",
+                  "HostName",
+                  "HostNameUI",
+                  "OwnerContactPersonName",
+                  "OwnerContactPersonPhone",
+                  "OwnerContactPersonEMail",
+                  "IsOwnSystem",
+                  "CipherSuites",
+                  "IsCipherSuiteDefault",
+                  "IsOAuth2IdentityProviderActive",
+                  "OAuth2IdentityProviderName",
+                  "OAuth2IdentityProviderUserLogonType",
+                  "OAuth2IdentityProviderCertificateSubject",
+                  "OAuth2IdentityProviderCertificateIssuer",
+                  "OAuth2IdentityProviderCertificatePublicKeyBase64",
+                  "OAuth2AuthorizationEndpoint",
+                  "OAuth2TokenEndpoint",
+                  "OAuth2Audience",
+                  "OAuth2RedirectURI",
+                  "IsSAPCloudConnectorActive",
+                  "SAPCloudConnectorLocationID",
+                  "IsRFCLoadBalancingActive",
+                  "RFCSAPSystemID",
+                  "RFCSAPSystemNumber",
+                  "RFCLogonGroup",
+                  "RFCMessageServerTargetHost",
+                  "IsRFCFastSerializationActive",
+                  "DestinationServiceUUID",
+                  "DestinationServiceName",
+                  "IsDefaultDestinationServiceActive",
+                  "IsHubSystem",
+                  "IsInboundOnly",
+                  "IsSAMLBearerAssertionProviderActive",
+                  "SAMLBearerAssertionProviderName",
+                  "SAMLBearerAssertionProviderCertificateSubject",
+                  "SAMLBearerAssertionProviderCertificateIssuer",
+                  "SAMLBearerAssertionProviderCertificatePublicKeyBase64",
+                  "SAMLBearerAssertionProviderUserLogonType",
+                  "CreatedAt",
+                  "CreatedBy",
+                  "ChangedAt",
+                  "ChangedBy",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "BusinessPartners",
+                  "InboundUsers",
+                  "OutboundUsers"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of CommunicationSystemsType",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add new entity to CommunicationSystems",
+        "tags": [
+          "Communication Systems"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/CommunicationSystems/SAP__self.SystemDefaults()": {
+      "get": {
+        "summary": "Invoke function SystemDefaults",
+        "tags": [
+          "Communication Systems"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.APS_COM_CS_A4C_ODATA_DEFAULT"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/CommunicationSystems/{UUID}": {
+      "parameters": [
+        {
+          "name": "UUID",
+          "in": "path",
+          "required": true,
+          "description": "Communication System UUID",
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get entity from CommunicationSystems by key",
+        "tags": [
+          "Communication Systems"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "ID",
+                  "Name",
+                  "Type",
+                  "Description",
+                  "TCPPort",
+                  "LogicalSystemID",
+                  "BusinessSystemID",
+                  "SAPClient",
+                  "HostName",
+                  "HostNameUI",
+                  "OwnerContactPersonName",
+                  "OwnerContactPersonPhone",
+                  "OwnerContactPersonEMail",
+                  "IsOwnSystem",
+                  "CipherSuites",
+                  "IsCipherSuiteDefault",
+                  "IsOAuth2IdentityProviderActive",
+                  "OAuth2IdentityProviderName",
+                  "OAuth2IdentityProviderUserLogonType",
+                  "OAuth2IdentityProviderCertificateSubject",
+                  "OAuth2IdentityProviderCertificateIssuer",
+                  "OAuth2IdentityProviderCertificatePublicKeyBase64",
+                  "OAuth2AuthorizationEndpoint",
+                  "OAuth2TokenEndpoint",
+                  "OAuth2Audience",
+                  "OAuth2RedirectURI",
+                  "IsSAPCloudConnectorActive",
+                  "SAPCloudConnectorLocationID",
+                  "IsRFCLoadBalancingActive",
+                  "RFCSAPSystemID",
+                  "RFCSAPSystemNumber",
+                  "RFCLogonGroup",
+                  "RFCMessageServerTargetHost",
+                  "IsRFCFastSerializationActive",
+                  "DestinationServiceUUID",
+                  "DestinationServiceName",
+                  "IsDefaultDestinationServiceActive",
+                  "IsHubSystem",
+                  "IsInboundOnly",
+                  "IsSAMLBearerAssertionProviderActive",
+                  "SAMLBearerAssertionProviderName",
+                  "SAMLBearerAssertionProviderCertificateSubject",
+                  "SAMLBearerAssertionProviderCertificateIssuer",
+                  "SAMLBearerAssertionProviderCertificatePublicKeyBase64",
+                  "SAMLBearerAssertionProviderUserLogonType",
+                  "CreatedAt",
+                  "CreatedBy",
+                  "ChangedAt",
+                  "ChangedBy",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "BusinessPartners",
+                  "InboundUsers",
+                  "OutboundUsers"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update entity in CommunicationSystems",
+        "tags": [
+          "Communication Systems"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete entity from CommunicationSystems",
+        "tags": [
+          "Communication Systems"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/CommunicationSystems/{UUID}/BusinessPartners": {
+      "parameters": [
+        {
+          "name": "UUID",
+          "in": "path",
+          "required": true,
+          "description": "Communication System UUID",
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get entities from related BusinessPartners",
+        "tags": [
+          "Communication Systems",
+          "Business Partners"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "UUID desc",
+                  "CommunicationSystemUUID",
+                  "CommunicationSystemUUID desc",
+                  "ID",
+                  "ID desc",
+                  "Name",
+                  "Name desc",
+                  "SAP__Messages",
+                  "SAP__Messages desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "CommunicationSystemUUID",
+                  "ID",
+                  "Name",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "CommunicationSystem"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of BusinessPartnersType",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.BusinessPartnersType"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add new entity to related BusinessPartners",
+        "tags": [
+          "Communication Systems",
+          "Business Partners"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.BusinessPartnersType-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.BusinessPartnersType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/CommunicationSystems/{UUID}/InboundUsers": {
+      "parameters": [
+        {
+          "name": "UUID",
+          "in": "path",
+          "required": true,
+          "description": "Communication System UUID",
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get entities from related InboundUsers",
+        "tags": [
+          "Communication Systems",
+          "Inbound Users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "UUID desc",
+                  "CommunicationSystemUUID",
+                  "CommunicationSystemUUID desc",
+                  "CommunicationUserID",
+                  "CommunicationUserID desc",
+                  "OAuth2ClientID",
+                  "OAuth2ClientID desc",
+                  "OAuth2GrantType",
+                  "OAuth2GrantType desc",
+                  "IsOAuth2RefreshTokenAllowed",
+                  "IsOAuth2RefreshTokenAllowed desc",
+                  "OAuth2RefreshTokenExpiryValue",
+                  "OAuth2RefreshTokenExpiryValue desc",
+                  "OAuth2RefreshTokenExpiryUnit",
+                  "OAuth2RefreshTokenExpiryUnit desc",
+                  "AuthenticationMethod",
+                  "AuthenticationMethod desc",
+                  "SAP__Messages",
+                  "SAP__Messages desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "CommunicationSystemUUID",
+                  "CommunicationUserID",
+                  "OAuth2ClientID",
+                  "OAuth2GrantType",
+                  "IsOAuth2RefreshTokenAllowed",
+                  "OAuth2RefreshTokenExpiryValue",
+                  "OAuth2RefreshTokenExpiryUnit",
+                  "AuthenticationMethod",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "CommunicationSystem"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of InboundUsersType",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.InboundUsersType"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add new entity to related InboundUsers",
+        "tags": [
+          "Communication Systems",
+          "Inbound Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.InboundUsersType-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.InboundUsersType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/CommunicationSystems/{UUID}/OutboundUsers": {
+      "parameters": [
+        {
+          "name": "UUID",
+          "in": "path",
+          "required": true,
+          "description": "Communication System UUID",
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get entities from related OutboundUsers",
+        "tags": [
+          "Communication Systems",
+          "Outbound Users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "UUID desc",
+                  "CommunicationSystemUUID",
+                  "CommunicationSystemUUID desc",
+                  "Name",
+                  "Name desc",
+                  "OAuth2ClientID",
+                  "OAuth2ClientID desc",
+                  "OAuth2ClientAuthenticationMethod",
+                  "OAuth2ClientAuthenticationMethod desc",
+                  "CertificateID",
+                  "CertificateID desc",
+                  "AuthenticationMethod",
+                  "AuthenticationMethod desc",
+                  "Password",
+                  "Password desc",
+                  "SAP__Messages",
+                  "SAP__Messages desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "CommunicationSystemUUID",
+                  "Name",
+                  "OAuth2ClientID",
+                  "OAuth2ClientAuthenticationMethod",
+                  "CertificateID",
+                  "AuthenticationMethod",
+                  "Password",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "CommunicationSystem"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of OutboundUsersType",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.OutboundUsersType"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add new entity to related OutboundUsers",
+        "tags": [
+          "Communication Systems",
+          "Outbound Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.OutboundUsersType-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.OutboundUsersType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/InboundUsers": {
+      "get": {
+        "summary": "Get entities from InboundUsers",
+        "tags": [
+          "Inbound Users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "UUID desc",
+                  "CommunicationSystemUUID",
+                  "CommunicationSystemUUID desc",
+                  "CommunicationUserID",
+                  "CommunicationUserID desc",
+                  "OAuth2ClientID",
+                  "OAuth2ClientID desc",
+                  "OAuth2GrantType",
+                  "OAuth2GrantType desc",
+                  "IsOAuth2RefreshTokenAllowed",
+                  "IsOAuth2RefreshTokenAllowed desc",
+                  "OAuth2RefreshTokenExpiryValue",
+                  "OAuth2RefreshTokenExpiryValue desc",
+                  "OAuth2RefreshTokenExpiryUnit",
+                  "OAuth2RefreshTokenExpiryUnit desc",
+                  "AuthenticationMethod",
+                  "AuthenticationMethod desc",
+                  "SAP__Messages",
+                  "SAP__Messages desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "CommunicationSystemUUID",
+                  "CommunicationUserID",
+                  "OAuth2ClientID",
+                  "OAuth2GrantType",
+                  "IsOAuth2RefreshTokenAllowed",
+                  "OAuth2RefreshTokenExpiryValue",
+                  "OAuth2RefreshTokenExpiryUnit",
+                  "AuthenticationMethod",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "CommunicationSystem"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of InboundUsersType",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.InboundUsersType"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add new entity to InboundUsers",
+        "tags": [
+          "Inbound Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.InboundUsersType-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.InboundUsersType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/InboundUsers/{UUID}": {
+      "parameters": [
+        {
+          "name": "UUID",
+          "in": "path",
+          "required": true,
+          "description": "Communication User UUID",
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get entity from InboundUsers by key",
+        "tags": [
+          "Inbound Users"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "CommunicationSystemUUID",
+                  "CommunicationUserID",
+                  "OAuth2ClientID",
+                  "OAuth2GrantType",
+                  "IsOAuth2RefreshTokenAllowed",
+                  "OAuth2RefreshTokenExpiryValue",
+                  "OAuth2RefreshTokenExpiryUnit",
+                  "AuthenticationMethod",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "CommunicationSystem"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.InboundUsersType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update entity in InboundUsers",
+        "tags": [
+          "Inbound Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.InboundUsersType-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete entity from InboundUsers",
+        "tags": [
+          "Inbound Users"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/InboundUsers/{UUID}/CommunicationSystem": {
+      "parameters": [
+        {
+          "name": "UUID",
+          "in": "path",
+          "required": true,
+          "description": "Communication User UUID",
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get related CommunicationSystem",
+        "tags": [
+          "Inbound Users",
+          "Communication Systems"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "ID",
+                  "Name",
+                  "Type",
+                  "Description",
+                  "TCPPort",
+                  "LogicalSystemID",
+                  "BusinessSystemID",
+                  "SAPClient",
+                  "HostName",
+                  "HostNameUI",
+                  "OwnerContactPersonName",
+                  "OwnerContactPersonPhone",
+                  "OwnerContactPersonEMail",
+                  "IsOwnSystem",
+                  "CipherSuites",
+                  "IsCipherSuiteDefault",
+                  "IsOAuth2IdentityProviderActive",
+                  "OAuth2IdentityProviderName",
+                  "OAuth2IdentityProviderUserLogonType",
+                  "OAuth2IdentityProviderCertificateSubject",
+                  "OAuth2IdentityProviderCertificateIssuer",
+                  "OAuth2IdentityProviderCertificatePublicKeyBase64",
+                  "OAuth2AuthorizationEndpoint",
+                  "OAuth2TokenEndpoint",
+                  "OAuth2Audience",
+                  "OAuth2RedirectURI",
+                  "IsSAPCloudConnectorActive",
+                  "SAPCloudConnectorLocationID",
+                  "IsRFCLoadBalancingActive",
+                  "RFCSAPSystemID",
+                  "RFCSAPSystemNumber",
+                  "RFCLogonGroup",
+                  "RFCMessageServerTargetHost",
+                  "IsRFCFastSerializationActive",
+                  "DestinationServiceUUID",
+                  "DestinationServiceName",
+                  "IsDefaultDestinationServiceActive",
+                  "IsHubSystem",
+                  "IsInboundOnly",
+                  "IsSAMLBearerAssertionProviderActive",
+                  "SAMLBearerAssertionProviderName",
+                  "SAMLBearerAssertionProviderCertificateSubject",
+                  "SAMLBearerAssertionProviderCertificateIssuer",
+                  "SAMLBearerAssertionProviderCertificatePublicKeyBase64",
+                  "SAMLBearerAssertionProviderUserLogonType",
+                  "CreatedAt",
+                  "CreatedBy",
+                  "ChangedAt",
+                  "ChangedBy",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "BusinessPartners",
+                  "InboundUsers",
+                  "OutboundUsers"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/OutboundUsers": {
+      "get": {
+        "summary": "Get entities from OutboundUsers",
+        "tags": [
+          "Outbound Users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "UUID desc",
+                  "CommunicationSystemUUID",
+                  "CommunicationSystemUUID desc",
+                  "Name",
+                  "Name desc",
+                  "OAuth2ClientID",
+                  "OAuth2ClientID desc",
+                  "OAuth2ClientAuthenticationMethod",
+                  "OAuth2ClientAuthenticationMethod desc",
+                  "CertificateID",
+                  "CertificateID desc",
+                  "AuthenticationMethod",
+                  "AuthenticationMethod desc",
+                  "Password",
+                  "Password desc",
+                  "SAP__Messages",
+                  "SAP__Messages desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "CommunicationSystemUUID",
+                  "Name",
+                  "OAuth2ClientID",
+                  "OAuth2ClientAuthenticationMethod",
+                  "CertificateID",
+                  "AuthenticationMethod",
+                  "Password",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "CommunicationSystem"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of OutboundUsersType",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.OutboundUsersType"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add new entity to OutboundUsers",
+        "tags": [
+          "Outbound Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.OutboundUsersType-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.OutboundUsersType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/OutboundUsers/{UUID}": {
+      "parameters": [
+        {
+          "name": "UUID",
+          "in": "path",
+          "required": true,
+          "description": "Communication User UUID",
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get entity from OutboundUsers by key",
+        "tags": [
+          "Outbound Users"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "CommunicationSystemUUID",
+                  "Name",
+                  "OAuth2ClientID",
+                  "OAuth2ClientAuthenticationMethod",
+                  "CertificateID",
+                  "AuthenticationMethod",
+                  "Password",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "CommunicationSystem"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.OutboundUsersType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update entity in OutboundUsers",
+        "tags": [
+          "Outbound Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.OutboundUsersType-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete entity from OutboundUsers",
+        "tags": [
+          "Outbound Users"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/OutboundUsers/{UUID}/CommunicationSystem": {
+      "parameters": [
+        {
+          "name": "UUID",
+          "in": "path",
+          "required": true,
+          "description": "Communication User UUID",
+          "schema": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef"
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get related CommunicationSystem",
+        "tags": [
+          "Outbound Users",
+          "Communication Systems"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "UUID",
+                  "ID",
+                  "Name",
+                  "Type",
+                  "Description",
+                  "TCPPort",
+                  "LogicalSystemID",
+                  "BusinessSystemID",
+                  "SAPClient",
+                  "HostName",
+                  "HostNameUI",
+                  "OwnerContactPersonName",
+                  "OwnerContactPersonPhone",
+                  "OwnerContactPersonEMail",
+                  "IsOwnSystem",
+                  "CipherSuites",
+                  "IsCipherSuiteDefault",
+                  "IsOAuth2IdentityProviderActive",
+                  "OAuth2IdentityProviderName",
+                  "OAuth2IdentityProviderUserLogonType",
+                  "OAuth2IdentityProviderCertificateSubject",
+                  "OAuth2IdentityProviderCertificateIssuer",
+                  "OAuth2IdentityProviderCertificatePublicKeyBase64",
+                  "OAuth2AuthorizationEndpoint",
+                  "OAuth2TokenEndpoint",
+                  "OAuth2Audience",
+                  "OAuth2RedirectURI",
+                  "IsSAPCloudConnectorActive",
+                  "SAPCloudConnectorLocationID",
+                  "IsRFCLoadBalancingActive",
+                  "RFCSAPSystemID",
+                  "RFCSAPSystemNumber",
+                  "RFCLogonGroup",
+                  "RFCMessageServerTargetHost",
+                  "IsRFCFastSerializationActive",
+                  "DestinationServiceUUID",
+                  "DestinationServiceName",
+                  "IsDefaultDestinationServiceActive",
+                  "IsHubSystem",
+                  "IsInboundOnly",
+                  "IsSAMLBearerAssertionProviderActive",
+                  "SAMLBearerAssertionProviderName",
+                  "SAMLBearerAssertionProviderCertificateSubject",
+                  "SAMLBearerAssertionProviderCertificateIssuer",
+                  "SAMLBearerAssertionProviderCertificatePublicKeyBase64",
+                  "SAMLBearerAssertionProviderUserLogonType",
+                  "CreatedAt",
+                  "CreatedBy",
+                  "ChangedAt",
+                  "ChangedBy",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "BusinessPartners",
+                  "InboundUsers",
+                  "OutboundUsers"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/$batch": {
+      "post": {
+        "summary": "Send a group of requests",
+        "description": "Group multiple requests into a single request payload, see [Batch Requests](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BatchRequests).\n\n*Please note that \"Try it out\" is not supported for this request.*",
+        "tags": [
+          "Batch Requests"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Batch request",
+          "content": {
+            "multipart/mixed;boundary=request-separator": {
+              "schema": {
+                "type": "string"
+              },
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET BusinessPartners HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Batch response",
+            "content": {
+              "multipart/mixed": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "--response-separator\nContent-Type: application/http\n\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{...}\n--response-separator--"
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.InboundUsersType": {
+        "type": "object",
+        "properties": {
+          "UUID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "title": "Communication User UUID",
+            "description": "Communication User UUID"
+          },
+          "CommunicationSystemUUID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "title": "Communication System UUID",
+            "description": "Communication System UUID"
+          },
+          "CommunicationUserID": {
+            "type": "string",
+            "maxLength": 12,
+            "title": "Communication User ID",
+            "description": "Communication User ID"
+          },
+          "OAuth2ClientID": {
+            "type": "string",
+            "maxLength": 40,
+            "title": "OAuth 2.0 Client ID",
+            "description": "OAuth 2.0 Client ID"
+          },
+          "OAuth2GrantType": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "OAuth 2.0 Grant Type",
+            "description": "OAuth 2.0 Grant Type"
+          },
+          "IsOAuth2RefreshTokenAllowed": {
+            "type": "boolean",
+            "title": "OAuth 2.0 Refresh Toke Allowed",
+            "description": "OAuth 2.0 Refresh Toke Allowed"
+          },
+          "OAuth2RefreshTokenExpiryValue": {
+            "type": "integer",
+            "format": "int32",
+            "title": "OAuth 2.0 Refresh Toke Expiry Value",
+            "description": "OAuth 2.0 Refresh Toke Expiry Value"
+          },
+          "OAuth2RefreshTokenExpiryUnit": {
+            "type": "string",
+            "maxLength": 6,
+            "title": "OAuth 2.0 Refresh Toke Expiry Unit",
+            "description": "OAuth 2.0 Refresh Toke Expiry Unit"
+          },
+          "AuthenticationMethod": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "Authentication Method",
+            "description": "Authentication Method"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message"
+            }
+          },
+          "CommunicationSystem": {
+            "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType"
+          }
+        },
+        "title": "Inbound Users"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.InboundUsersType-create": {
+        "type": "object",
+        "properties": {
+          "CommunicationSystemUUID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "title": "Communication System UUID",
+            "description": "Communication System UUID"
+          },
+          "CommunicationUserID": {
+            "type": "string",
+            "maxLength": 12,
+            "title": "Communication User ID",
+            "description": "Communication User ID"
+          },
+          "OAuth2ClientID": {
+            "type": "string",
+            "maxLength": 40,
+            "title": "OAuth 2.0 Client ID",
+            "description": "OAuth 2.0 Client ID"
+          },
+          "OAuth2GrantType": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "OAuth 2.0 Grant Type",
+            "description": "OAuth 2.0 Grant Type"
+          },
+          "IsOAuth2RefreshTokenAllowed": {
+            "type": "boolean",
+            "title": "OAuth 2.0 Refresh Toke Allowed",
+            "description": "OAuth 2.0 Refresh Toke Allowed"
+          },
+          "OAuth2RefreshTokenExpiryValue": {
+            "type": "integer",
+            "format": "int32",
+            "title": "OAuth 2.0 Refresh Toke Expiry Value",
+            "description": "OAuth 2.0 Refresh Toke Expiry Value"
+          },
+          "OAuth2RefreshTokenExpiryUnit": {
+            "type": "string",
+            "maxLength": 6,
+            "title": "OAuth 2.0 Refresh Toke Expiry Unit",
+            "description": "OAuth 2.0 Refresh Toke Expiry Unit"
+          },
+          "AuthenticationMethod": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "Authentication Method",
+            "description": "Authentication Method"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message-create"
+            }
+          },
+          "CommunicationSystem": {
+            "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType-create"
+          }
+        },
+        "title": "Inbound Users (for create)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.InboundUsersType-update": {
+        "type": "object",
+        "properties": {
+          "CommunicationUserID": {
+            "type": "string",
+            "maxLength": 12,
+            "title": "Communication User ID",
+            "description": "Communication User ID"
+          },
+          "OAuth2ClientID": {
+            "type": "string",
+            "maxLength": 40,
+            "title": "OAuth 2.0 Client ID",
+            "description": "OAuth 2.0 Client ID"
+          },
+          "OAuth2GrantType": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "OAuth 2.0 Grant Type",
+            "description": "OAuth 2.0 Grant Type"
+          },
+          "IsOAuth2RefreshTokenAllowed": {
+            "type": "boolean",
+            "title": "OAuth 2.0 Refresh Toke Allowed",
+            "description": "OAuth 2.0 Refresh Toke Allowed"
+          },
+          "OAuth2RefreshTokenExpiryValue": {
+            "type": "integer",
+            "format": "int32",
+            "title": "OAuth 2.0 Refresh Toke Expiry Value",
+            "description": "OAuth 2.0 Refresh Toke Expiry Value"
+          },
+          "OAuth2RefreshTokenExpiryUnit": {
+            "type": "string",
+            "maxLength": 6,
+            "title": "OAuth 2.0 Refresh Toke Expiry Unit",
+            "description": "OAuth 2.0 Refresh Toke Expiry Unit"
+          },
+          "AuthenticationMethod": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "Authentication Method",
+            "description": "Authentication Method"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message-update"
+            }
+          }
+        },
+        "title": "Inbound Users (for update)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.OutboundUsersType": {
+        "type": "object",
+        "properties": {
+          "UUID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "title": "Communication User UUID",
+            "description": "Communication User UUID"
+          },
+          "CommunicationSystemUUID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "title": "Communication System UUID",
+            "description": "Communication System UUID"
+          },
+          "Name": {
+            "type": "string",
+            "maxLength": 254,
+            "title": "Communication User Name",
+            "description": "Communication User Name"
+          },
+          "OAuth2ClientID": {
+            "type": "string",
+            "maxLength": 254,
+            "title": "OAuth 2.0 Client ID",
+            "description": "OAuth 2.0 Client ID"
+          },
+          "OAuth2ClientAuthenticationMethod": {
+            "type": "string",
+            "maxLength": 5,
+            "title": "OAuth 2.0 Client Authentication Method",
+            "description": "OAuth 2.0 Client Authentication Method"
+          },
+          "CertificateID": {
+            "type": "string",
+            "maxLength": 6,
+            "title": "Certificate ID",
+            "description": "Certificate ID"
+          },
+          "AuthenticationMethod": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "Authentication Method",
+            "description": "Authentication Method"
+          },
+          "Password": {
+            "type": "string",
+            "maxLength": 109,
+            "title": "Data",
+            "description": "SECSTORE: Data"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message"
+            }
+          },
+          "CommunicationSystem": {
+            "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType"
+          }
+        },
+        "title": "Outbound Users"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.OutboundUsersType-create": {
+        "type": "object",
+        "properties": {
+          "CommunicationSystemUUID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "title": "Communication System UUID",
+            "description": "Communication System UUID"
+          },
+          "Name": {
+            "type": "string",
+            "maxLength": 254,
+            "title": "Communication User Name",
+            "description": "Communication User Name"
+          },
+          "OAuth2ClientID": {
+            "type": "string",
+            "maxLength": 254,
+            "title": "OAuth 2.0 Client ID",
+            "description": "OAuth 2.0 Client ID"
+          },
+          "OAuth2ClientAuthenticationMethod": {
+            "type": "string",
+            "maxLength": 5,
+            "title": "OAuth 2.0 Client Authentication Method",
+            "description": "OAuth 2.0 Client Authentication Method"
+          },
+          "CertificateID": {
+            "type": "string",
+            "maxLength": 6,
+            "title": "Certificate ID",
+            "description": "Certificate ID"
+          },
+          "AuthenticationMethod": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "Authentication Method",
+            "description": "Authentication Method"
+          },
+          "Password": {
+            "type": "string",
+            "maxLength": 109,
+            "title": "Data",
+            "description": "SECSTORE: Data"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message-create"
+            }
+          },
+          "CommunicationSystem": {
+            "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType-create"
+          }
+        },
+        "title": "Outbound Users (for create)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.OutboundUsersType-update": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "maxLength": 254,
+            "title": "Communication User Name",
+            "description": "Communication User Name"
+          },
+          "OAuth2ClientID": {
+            "type": "string",
+            "maxLength": 254,
+            "title": "OAuth 2.0 Client ID",
+            "description": "OAuth 2.0 Client ID"
+          },
+          "OAuth2ClientAuthenticationMethod": {
+            "type": "string",
+            "maxLength": 5,
+            "title": "OAuth 2.0 Client Authentication Method",
+            "description": "OAuth 2.0 Client Authentication Method"
+          },
+          "CertificateID": {
+            "type": "string",
+            "maxLength": 6,
+            "title": "Certificate ID",
+            "description": "Certificate ID"
+          },
+          "AuthenticationMethod": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "Authentication Method",
+            "description": "Authentication Method"
+          },
+          "Password": {
+            "type": "string",
+            "maxLength": 109,
+            "title": "Data",
+            "description": "SECSTORE: Data"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message-update"
+            }
+          }
+        },
+        "title": "Outbound Users (for update)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType": {
+        "type": "object",
+        "properties": {
+          "UUID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "title": "Communication System UUID",
+            "description": "Communication System UUID"
+          },
+          "ID": {
+            "type": "string",
+            "maxLength": 60,
+            "title": "Communication System ID",
+            "description": "Communication System ID"
+          },
+          "Name": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Communication System Name",
+            "description": "Communication System Name"
+          },
+          "Type": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "Communication System Type",
+            "description": "Communication System Type"
+          },
+          "Description": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Communication System Description",
+            "description": "Communication System Description"
+          },
+          "TCPPort": {
+            "type": "integer",
+            "format": "int32",
+            "title": "TCP Port",
+            "description": "Communication System TCP Port"
+          },
+          "LogicalSystemID": {
+            "type": "string",
+            "maxLength": 10,
+            "title": "Logical System ID",
+            "description": "Logical System ID"
+          },
+          "BusinessSystemID": {
+            "type": "string",
+            "maxLength": 60,
+            "title": "Business System ID",
+            "description": "Business System ID"
+          },
+          "SAPClient": {
+            "type": "string",
+            "maxLength": 3,
+            "title": "SAP Client",
+            "description": "SAP Client"
+          },
+          "HostName": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Host Name",
+            "description": "Communication System Host Name"
+          },
+          "HostNameUI": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "UI Host Name",
+            "description": "Communication System UI Host Name"
+          },
+          "OwnerContactPersonName": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Owner Contact Person Name",
+            "description": "Owner Contact Person Name"
+          },
+          "OwnerContactPersonPhone": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Owner Contact Person Phone",
+            "description": "Owner Contact Person Phone"
+          },
+          "OwnerContactPersonEMail": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Owner Contact Person EMail",
+            "description": "Owner Contact Person EMail"
+          },
+          "IsOwnSystem": {
+            "type": "boolean",
+            "title": "Own System",
+            "description": "Own System"
+          },
+          "CipherSuites": {
+            "type": "string",
+            "maxLength": 14,
+            "title": "Cipher Suites",
+            "description": "Cipher Suites configuration"
+          },
+          "IsCipherSuiteDefault": {
+            "type": "boolean",
+            "title": "Is Cipher Suites Code default",
+            "description": "Is Cipher Suites configuration default?"
+          },
+          "IsOAuth2IdentityProviderActive": {
+            "type": "boolean",
+            "title": "OAuth 2.0 IDP Enabled",
+            "description": "OAuth 2.0 IDP Enabled"
+          },
+          "OAuth2IdentityProviderName": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "OAuth 2.0 IDP Name",
+            "description": "OAuth 2.0 IDP Name"
+          },
+          "OAuth2IdentityProviderUserLogonType": {
+            "type": "string",
+            "maxLength": 9,
+            "title": "OAuth 2.0 IDP User Logon Type",
+            "description": "OAuth 2.0 IDP User Logon Type"
+          },
+          "OAuth2IdentityProviderCertificateSubject": {
+            "type": "string",
+            "title": "OAuth 2.0 IDP Certificate Subject",
+            "description": "OAuth 2.0 IDP Certificate Subject"
+          },
+          "OAuth2IdentityProviderCertificateIssuer": {
+            "type": "string",
+            "title": "OAuth 2.0 IDP Certificate Issuer",
+            "description": "OAuth 2.0 IDP Certificate Issuer"
+          },
+          "OAuth2IdentityProviderCertificatePublicKeyBase64": {
+            "type": "string",
+            "format": "base64url",
+            "title": "OAuth 2.0 IDP Certificate",
+            "description": "OAuth 2.0 IDP Certificate"
+          },
+          "OAuth2AuthorizationEndpoint": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "OAuth 2.0 Authorization Endpoint",
+            "description": "OAuth 2.0 Authorization Endpoint"
+          },
+          "OAuth2TokenEndpoint": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "OAuth 2.0 Token Endpoint",
+            "description": "OAuth 2.0 Token Endpoint"
+          },
+          "OAuth2Audience": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "OAuth 2.0 Audience",
+            "description": "OAuth 2.0 Audience"
+          },
+          "OAuth2RedirectURI": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "OAuth 2.0 Redirect Uri",
+            "description": "OAuth 2.0 Redirect Uri"
+          },
+          "IsSAPCloudConnectorActive": {
+            "type": "boolean",
+            "title": "Use Cloud Connector",
+            "description": "Use Cloud Connector"
+          },
+          "SAPCloudConnectorLocationID": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "SAP Cloud Connector Location ID",
+            "description": "SAP Cloud Connector Location ID"
+          },
+          "IsRFCLoadBalancingActive": {
+            "type": "boolean",
+            "title": "RFC Load Balancing",
+            "description": "RFC Load Balancing"
+          },
+          "RFCSAPSystemID": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "RFC SAP System ID",
+            "description": "RFC SAP System ID"
+          },
+          "RFCSAPSystemNumber": {
+            "type": "string",
+            "maxLength": 2,
+            "title": "RFC SAP System Number",
+            "description": "RFC SAP System Number"
+          },
+          "RFCLogonGroup": {
+            "type": "string",
+            "maxLength": 64,
+            "title": "RFC Logon Group",
+            "description": "RFC Logon Group"
+          },
+          "RFCMessageServerTargetHost": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "RFC Message Server Target Host",
+            "description": "RFC Message Server Target Host"
+          },
+          "IsRFCFastSerializationActive": {
+            "type": "boolean",
+            "title": "RFC Fast Serialization",
+            "description": "Is RFC fast serialization enabled?"
+          },
+          "DestinationServiceUUID": {
+            "type": "string",
+            "nullable": true,
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "title": "Destination Service UUID",
+            "description": "Destination Service UUID"
+          },
+          "DestinationServiceName": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Destination Service Name",
+            "description": "Destination Service Name"
+          },
+          "IsDefaultDestinationServiceActive": {
+            "type": "boolean",
+            "title": "Is Default Destination Service Active",
+            "description": "Is Default Destination Service Active"
+          },
+          "IsHubSystem": {
+            "type": "boolean",
+            "title": "Hub System",
+            "description": "Hub System"
+          },
+          "IsInboundOnly": {
+            "type": "boolean",
+            "title": "Inbound Only",
+            "description": "Inbound Only"
+          },
+          "IsSAMLBearerAssertionProviderActive": {
+            "type": "boolean",
+            "title": "SAML Bearer Assertion Provider Enabled",
+            "description": "SAML Bearer Assertion Provider Enabled"
+          },
+          "SAMLBearerAssertionProviderName": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "SAML Bearer Assertion Provider Name",
+            "description": "SAML Bearer Assertion Provider Name"
+          },
+          "SAMLBearerAssertionProviderCertificateSubject": {
+            "type": "string",
+            "title": "SAML BAP Certificate Subject",
+            "description": "SAML BAP Certificate Subject"
+          },
+          "SAMLBearerAssertionProviderCertificateIssuer": {
+            "type": "string",
+            "title": "SAML BAP Certificate Issuer",
+            "description": "SAML BAP Certificate Issuer"
+          },
+          "SAMLBearerAssertionProviderCertificatePublicKeyBase64": {
+            "type": "string",
+            "format": "base64url",
+            "title": "SAML BAP Certificate",
+            "description": "SAML Bearer Assertion Provider Certificate"
+          },
+          "SAMLBearerAssertionProviderUserLogonType": {
+            "type": "string",
+            "maxLength": 9,
+            "title": "SAML BAP User Logon Type",
+            "description": "SAML Bearer Assersion Provider User Logon Type"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "nullable": true,
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "title": "Created DateTime",
+            "description": "Created DateTime"
+          },
+          "CreatedBy": {
+            "type": "string",
+            "maxLength": 12,
+            "title": "Created By User ID",
+            "description": "Created by User ID"
+          },
+          "ChangedAt": {
+            "type": "string",
+            "nullable": true,
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "title": "Changed DateTime",
+            "description": "Changed DateTime"
+          },
+          "ChangedBy": {
+            "type": "string",
+            "maxLength": 12,
+            "title": "Changed By User ID",
+            "description": "Changed by User ID"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message"
+            }
+          },
+          "BusinessPartners": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.BusinessPartnersType"
+            }
+          },
+          "InboundUsers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.InboundUsersType"
+            }
+          },
+          "OutboundUsers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.OutboundUsersType"
+            }
+          }
+        },
+        "title": "Communication Systems"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType-create": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "maxLength": 60,
+            "title": "Communication System ID",
+            "description": "Communication System ID"
+          },
+          "Name": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Communication System Name",
+            "description": "Communication System Name"
+          },
+          "Type": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "Communication System Type",
+            "description": "Communication System Type"
+          },
+          "Description": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Communication System Description",
+            "description": "Communication System Description"
+          },
+          "TCPPort": {
+            "type": "integer",
+            "format": "int32",
+            "title": "TCP Port",
+            "description": "Communication System TCP Port"
+          },
+          "LogicalSystemID": {
+            "type": "string",
+            "maxLength": 10,
+            "title": "Logical System ID",
+            "description": "Logical System ID"
+          },
+          "BusinessSystemID": {
+            "type": "string",
+            "maxLength": 60,
+            "title": "Business System ID",
+            "description": "Business System ID"
+          },
+          "SAPClient": {
+            "type": "string",
+            "maxLength": 3,
+            "title": "SAP Client",
+            "description": "SAP Client"
+          },
+          "HostName": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Host Name",
+            "description": "Communication System Host Name"
+          },
+          "HostNameUI": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "UI Host Name",
+            "description": "Communication System UI Host Name"
+          },
+          "OwnerContactPersonName": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Owner Contact Person Name",
+            "description": "Owner Contact Person Name"
+          },
+          "OwnerContactPersonPhone": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Owner Contact Person Phone",
+            "description": "Owner Contact Person Phone"
+          },
+          "OwnerContactPersonEMail": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Owner Contact Person EMail",
+            "description": "Owner Contact Person EMail"
+          },
+          "IsOwnSystem": {
+            "type": "boolean",
+            "title": "Own System",
+            "description": "Own System"
+          },
+          "CipherSuites": {
+            "type": "string",
+            "maxLength": 14,
+            "title": "Cipher Suites",
+            "description": "Cipher Suites configuration"
+          },
+          "IsOAuth2IdentityProviderActive": {
+            "type": "boolean",
+            "title": "OAuth 2.0 IDP Enabled",
+            "description": "OAuth 2.0 IDP Enabled"
+          },
+          "OAuth2IdentityProviderName": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "OAuth 2.0 IDP Name",
+            "description": "OAuth 2.0 IDP Name"
+          },
+          "OAuth2IdentityProviderUserLogonType": {
+            "type": "string",
+            "maxLength": 9,
+            "title": "OAuth 2.0 IDP User Logon Type",
+            "description": "OAuth 2.0 IDP User Logon Type"
+          },
+          "OAuth2IdentityProviderCertificatePublicKeyBase64": {
+            "type": "string",
+            "format": "base64url",
+            "title": "OAuth 2.0 IDP Certificate",
+            "description": "OAuth 2.0 IDP Certificate"
+          },
+          "OAuth2AuthorizationEndpoint": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "OAuth 2.0 Authorization Endpoint",
+            "description": "OAuth 2.0 Authorization Endpoint"
+          },
+          "OAuth2TokenEndpoint": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "OAuth 2.0 Token Endpoint",
+            "description": "OAuth 2.0 Token Endpoint"
+          },
+          "OAuth2Audience": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "OAuth 2.0 Audience",
+            "description": "OAuth 2.0 Audience"
+          },
+          "OAuth2RedirectURI": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "OAuth 2.0 Redirect Uri",
+            "description": "OAuth 2.0 Redirect Uri"
+          },
+          "IsSAPCloudConnectorActive": {
+            "type": "boolean",
+            "title": "Use Cloud Connector",
+            "description": "Use Cloud Connector"
+          },
+          "SAPCloudConnectorLocationID": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "SAP Cloud Connector Location ID",
+            "description": "SAP Cloud Connector Location ID"
+          },
+          "IsRFCLoadBalancingActive": {
+            "type": "boolean",
+            "title": "RFC Load Balancing",
+            "description": "RFC Load Balancing"
+          },
+          "RFCSAPSystemID": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "RFC SAP System ID",
+            "description": "RFC SAP System ID"
+          },
+          "RFCSAPSystemNumber": {
+            "type": "string",
+            "maxLength": 2,
+            "title": "RFC SAP System Number",
+            "description": "RFC SAP System Number"
+          },
+          "RFCLogonGroup": {
+            "type": "string",
+            "maxLength": 64,
+            "title": "RFC Logon Group",
+            "description": "RFC Logon Group"
+          },
+          "RFCMessageServerTargetHost": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "RFC Message Server Target Host",
+            "description": "RFC Message Server Target Host"
+          },
+          "IsRFCFastSerializationActive": {
+            "type": "boolean",
+            "title": "RFC Fast Serialization",
+            "description": "Is RFC fast serialization enabled?"
+          },
+          "DestinationServiceUUID": {
+            "type": "string",
+            "nullable": true,
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "title": "Destination Service UUID",
+            "description": "Destination Service UUID"
+          },
+          "DestinationServiceName": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Destination Service Name",
+            "description": "Destination Service Name"
+          },
+          "IsDefaultDestinationServiceActive": {
+            "type": "boolean",
+            "title": "Is Default Destination Service Active",
+            "description": "Is Default Destination Service Active"
+          },
+          "IsHubSystem": {
+            "type": "boolean",
+            "title": "Hub System",
+            "description": "Hub System"
+          },
+          "IsInboundOnly": {
+            "type": "boolean",
+            "title": "Inbound Only",
+            "description": "Inbound Only"
+          },
+          "IsSAMLBearerAssertionProviderActive": {
+            "type": "boolean",
+            "title": "SAML Bearer Assertion Provider Enabled",
+            "description": "SAML Bearer Assertion Provider Enabled"
+          },
+          "SAMLBearerAssertionProviderName": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "SAML Bearer Assertion Provider Name",
+            "description": "SAML Bearer Assertion Provider Name"
+          },
+          "SAMLBearerAssertionProviderCertificatePublicKeyBase64": {
+            "type": "string",
+            "format": "base64url",
+            "title": "SAML BAP Certificate",
+            "description": "SAML Bearer Assertion Provider Certificate"
+          },
+          "SAMLBearerAssertionProviderUserLogonType": {
+            "type": "string",
+            "maxLength": 9,
+            "title": "SAML BAP User Logon Type",
+            "description": "SAML Bearer Assersion Provider User Logon Type"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message-create"
+            }
+          },
+          "BusinessPartners": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.BusinessPartnersType-create"
+            }
+          },
+          "InboundUsers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.InboundUsersType-create"
+            }
+          },
+          "OutboundUsers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.OutboundUsersType-create"
+            }
+          }
+        },
+        "title": "Communication Systems (for create)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType-update": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "maxLength": 60,
+            "title": "Communication System ID",
+            "description": "Communication System ID"
+          },
+          "Name": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Communication System Name",
+            "description": "Communication System Name"
+          },
+          "Type": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "Communication System Type",
+            "description": "Communication System Type"
+          },
+          "Description": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Communication System Description",
+            "description": "Communication System Description"
+          },
+          "TCPPort": {
+            "type": "integer",
+            "format": "int32",
+            "title": "TCP Port",
+            "description": "Communication System TCP Port"
+          },
+          "LogicalSystemID": {
+            "type": "string",
+            "maxLength": 10,
+            "title": "Logical System ID",
+            "description": "Logical System ID"
+          },
+          "BusinessSystemID": {
+            "type": "string",
+            "maxLength": 60,
+            "title": "Business System ID",
+            "description": "Business System ID"
+          },
+          "SAPClient": {
+            "type": "string",
+            "maxLength": 3,
+            "title": "SAP Client",
+            "description": "SAP Client"
+          },
+          "HostName": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Host Name",
+            "description": "Communication System Host Name"
+          },
+          "HostNameUI": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "UI Host Name",
+            "description": "Communication System UI Host Name"
+          },
+          "OwnerContactPersonName": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Owner Contact Person Name",
+            "description": "Owner Contact Person Name"
+          },
+          "OwnerContactPersonPhone": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Owner Contact Person Phone",
+            "description": "Owner Contact Person Phone"
+          },
+          "OwnerContactPersonEMail": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "Owner Contact Person EMail",
+            "description": "Owner Contact Person EMail"
+          },
+          "IsOwnSystem": {
+            "type": "boolean",
+            "title": "Own System",
+            "description": "Own System"
+          },
+          "CipherSuites": {
+            "type": "string",
+            "maxLength": 14,
+            "title": "Cipher Suites",
+            "description": "Cipher Suites configuration"
+          },
+          "IsOAuth2IdentityProviderActive": {
+            "type": "boolean",
+            "title": "OAuth 2.0 IDP Enabled",
+            "description": "OAuth 2.0 IDP Enabled"
+          },
+          "OAuth2IdentityProviderName": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "OAuth 2.0 IDP Name",
+            "description": "OAuth 2.0 IDP Name"
+          },
+          "OAuth2IdentityProviderUserLogonType": {
+            "type": "string",
+            "maxLength": 9,
+            "title": "OAuth 2.0 IDP User Logon Type",
+            "description": "OAuth 2.0 IDP User Logon Type"
+          },
+          "OAuth2IdentityProviderCertificatePublicKeyBase64": {
+            "type": "string",
+            "format": "base64url",
+            "title": "OAuth 2.0 IDP Certificate",
+            "description": "OAuth 2.0 IDP Certificate"
+          },
+          "OAuth2AuthorizationEndpoint": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "OAuth 2.0 Authorization Endpoint",
+            "description": "OAuth 2.0 Authorization Endpoint"
+          },
+          "OAuth2TokenEndpoint": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "OAuth 2.0 Token Endpoint",
+            "description": "OAuth 2.0 Token Endpoint"
+          },
+          "OAuth2Audience": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "OAuth 2.0 Audience",
+            "description": "OAuth 2.0 Audience"
+          },
+          "OAuth2RedirectURI": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "OAuth 2.0 Redirect Uri",
+            "description": "OAuth 2.0 Redirect Uri"
+          },
+          "IsSAPCloudConnectorActive": {
+            "type": "boolean",
+            "title": "Use Cloud Connector",
+            "description": "Use Cloud Connector"
+          },
+          "SAPCloudConnectorLocationID": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "SAP Cloud Connector Location ID",
+            "description": "SAP Cloud Connector Location ID"
+          },
+          "IsRFCLoadBalancingActive": {
+            "type": "boolean",
+            "title": "RFC Load Balancing",
+            "description": "RFC Load Balancing"
+          },
+          "RFCSAPSystemID": {
+            "type": "string",
+            "maxLength": 8,
+            "title": "RFC SAP System ID",
+            "description": "RFC SAP System ID"
+          },
+          "RFCSAPSystemNumber": {
+            "type": "string",
+            "maxLength": 2,
+            "title": "RFC SAP System Number",
+            "description": "RFC SAP System Number"
+          },
+          "RFCLogonGroup": {
+            "type": "string",
+            "maxLength": 64,
+            "title": "RFC Logon Group",
+            "description": "RFC Logon Group"
+          },
+          "RFCMessageServerTargetHost": {
+            "type": "string",
+            "maxLength": 256,
+            "title": "RFC Message Server Target Host",
+            "description": "RFC Message Server Target Host"
+          },
+          "IsRFCFastSerializationActive": {
+            "type": "boolean",
+            "title": "RFC Fast Serialization",
+            "description": "Is RFC fast serialization enabled?"
+          },
+          "DestinationServiceUUID": {
+            "type": "string",
+            "nullable": true,
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "title": "Destination Service UUID",
+            "description": "Destination Service UUID"
+          },
+          "DestinationServiceName": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Destination Service Name",
+            "description": "Destination Service Name"
+          },
+          "IsDefaultDestinationServiceActive": {
+            "type": "boolean",
+            "title": "Is Default Destination Service Active",
+            "description": "Is Default Destination Service Active"
+          },
+          "IsHubSystem": {
+            "type": "boolean",
+            "title": "Hub System",
+            "description": "Hub System"
+          },
+          "IsInboundOnly": {
+            "type": "boolean",
+            "title": "Inbound Only",
+            "description": "Inbound Only"
+          },
+          "IsSAMLBearerAssertionProviderActive": {
+            "type": "boolean",
+            "title": "SAML Bearer Assertion Provider Enabled",
+            "description": "SAML Bearer Assertion Provider Enabled"
+          },
+          "SAMLBearerAssertionProviderName": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "SAML Bearer Assertion Provider Name",
+            "description": "SAML Bearer Assertion Provider Name"
+          },
+          "SAMLBearerAssertionProviderCertificatePublicKeyBase64": {
+            "type": "string",
+            "format": "base64url",
+            "title": "SAML BAP Certificate",
+            "description": "SAML Bearer Assertion Provider Certificate"
+          },
+          "SAMLBearerAssertionProviderUserLogonType": {
+            "type": "string",
+            "maxLength": 9,
+            "title": "SAML BAP User Logon Type",
+            "description": "SAML Bearer Assersion Provider User Logon Type"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message-update"
+            }
+          }
+        },
+        "title": "Communication Systems (for update)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.BusinessPartnersType": {
+        "type": "object",
+        "properties": {
+          "UUID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "title": "Business Partner UUID",
+            "description": "Business Partner UUID"
+          },
+          "CommunicationSystemUUID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "title": "Communication System UUID",
+            "description": "Communication System UUID"
+          },
+          "ID": {
+            "type": "string",
+            "maxLength": 10,
+            "title": "ID",
+            "description": "ID"
+          },
+          "Name": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Name",
+            "description": "Name"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message"
+            }
+          },
+          "CommunicationSystem": {
+            "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType"
+          }
+        },
+        "title": "Business Partners"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.BusinessPartnersType-create": {
+        "type": "object",
+        "properties": {
+          "CommunicationSystemUUID": {
+            "type": "string",
+            "format": "uuid",
+            "example": "01234567-89ab-cdef-0123-456789abcdef",
+            "title": "Communication System UUID",
+            "description": "Communication System UUID"
+          },
+          "ID": {
+            "type": "string",
+            "maxLength": 10,
+            "title": "ID",
+            "description": "ID"
+          },
+          "Name": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Name",
+            "description": "Name"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message-create"
+            }
+          },
+          "CommunicationSystem": {
+            "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.CommunicationSystemsType-create"
+          }
+        },
+        "title": "Business Partners (for create)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.BusinessPartnersType-update": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "maxLength": 10,
+            "title": "ID",
+            "description": "ID"
+          },
+          "Name": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Name",
+            "description": "Name"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message-update"
+            }
+          }
+        },
+        "title": "Business Partners (for update)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.APS_COM_CS_A4C_ODATA_DEFAULT": {
+        "type": "object",
+        "properties": {
+          "SystemCipherSuiteDefault": {
+            "type": "string",
+            "maxLength": 14
+          }
+        },
+        "title": "APS_COM_CS_A4C_ODATA_DEFAULT"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.APS_COM_CS_A4C_ODATA_DEFAULT-create": {
+        "type": "object",
+        "properties": {
+          "SystemCipherSuiteDefault": {
+            "type": "string",
+            "maxLength": 14
+          }
+        },
+        "title": "APS_COM_CS_A4C_ODATA_DEFAULT (for create)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.APS_COM_CS_A4C_ODATA_DEFAULT-update": {
+        "type": "object",
+        "properties": {
+          "SystemCipherSuiteDefault": {
+            "type": "string",
+            "maxLength": 14
+          }
+        },
+        "title": "APS_COM_CS_A4C_ODATA_DEFAULT (for update)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          },
+          "additionalTargets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "transition": {
+            "type": "boolean"
+          },
+          "numericSeverity": {
+            "type": "integer",
+            "format": "uint8"
+          },
+          "longtextUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "title": "SAP__Message"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message-create": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          },
+          "additionalTargets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "transition": {
+            "type": "boolean"
+          },
+          "numericSeverity": {
+            "type": "integer",
+            "format": "uint8"
+          },
+          "longtextUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "title": "SAP__Message (for create)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cs_a4c_odata.v0001.SAP__Message-update": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          },
+          "additionalTargets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "transition": {
+            "type": "boolean"
+          },
+          "numericSeverity": {
+            "type": "integer",
+            "format": "uint8"
+          },
+          "longtextUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "title": "SAP__Message (for update)"
+      },
+      "count": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+      },
+      "error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "innererror": {
+                "type": "object",
+                "description": "The structure of this object is service-specific"
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "count": {
+        "name": "$count",
+        "in": "query",
+        "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "search": {
+        "name": "$search",
+        "in": "query",
+        "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "BasicAuth": []
+    }
+  ]
+}

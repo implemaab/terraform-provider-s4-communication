@@ -1,0 +1,1365 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Communication User",
+    "version": "1.0.0",
+    "description": "The service provides communication user details. Moreover, you can read and assign certificates."
+  },
+  "externalDocs": {
+    "description": "Business Documentation",
+    "url": "https://help.sap.com/http.svc/ahp2/SAP_S4HANA_CLOUD/2508.latest/EN/9c/a817560dcb4b2e8c1f5ce1d3c6b8aa/frameset.htm"
+  },
+  "x-sap-api-type": "ODATAV4",
+  "x-sap-shortText": "Create, read, update and delete communication users using this synchronous inbound service",
+  "x-sap-software-min-version": "2508",
+  "x-sap-ext-overview": [
+    {
+      "name": "Communication Scenario",
+      "values": [
+        {
+          "text": "Cloud Integration Automation Integration (SAP_COM_0A31)",
+          "format": "plain"
+        },
+        {
+          "text": "Communication Management Integration (SAP_COM_0A48)",
+          "format": "plain"
+        }
+      ]
+    },
+    {
+      "name": "Authentication Methods",
+      "values": [
+        {
+          "text": "x509",
+          "format": "plain"
+        }
+      ]
+    },
+    {
+      "name": "Service Group Name",
+      "values": [
+        {
+          "text": "APS_COM_CU_A4C_ODATA",
+          "format": "plain"
+        }
+      ]
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://{host}:{port}/sap/opu/odata4/sap/aps_com_cu_a4c_odata/srvd_a2x/sap/aps_com_cu_a4c_odata/0001",
+      "variables": {
+        "host": {
+          "default": ""
+        },
+        "port": {
+          "default": ""
+        }
+      }
+    },
+    {
+      "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata4/sap/aps_com_cu_a4c_odata/srvd_a2x/sap/aps_com_cu_a4c_odata/0001"
+    }
+  ],
+  "x-sap-extensible": {
+    "supported": "no"
+  },
+  "tags": [
+    {
+      "name": "Certificates"
+    },
+    {
+      "name": "Communication Users"
+    }
+  ],
+  "paths": {
+    "/Certificates": {
+      "get": {
+        "summary": "Get entities from Certificates",
+        "tags": [
+          "Certificates"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Key",
+                  "Key desc",
+                  "CommunicationUserID",
+                  "CommunicationUserID desc",
+                  "PublicKeyBase64",
+                  "PublicKeyBase64 desc",
+                  "SAP__Messages",
+                  "SAP__Messages desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Key",
+                  "CommunicationUserID",
+                  "Subject",
+                  "Issuer",
+                  "PublicKeyBase64",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "CommunicationUser"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of CertificatesType",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CertificatesType"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add new entity to Certificates",
+        "tags": [
+          "Certificates"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CertificatesType-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CertificatesType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Certificates/{Key}": {
+      "parameters": [
+        {
+          "name": "Key",
+          "in": "path",
+          "required": true,
+          "description": "Communication User Certificate Key",
+          "schema": {
+            "type": "string",
+            "maxLength": 80
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get entity from Certificates by key",
+        "tags": [
+          "Certificates"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Key",
+                  "CommunicationUserID",
+                  "Subject",
+                  "Issuer",
+                  "PublicKeyBase64",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "CommunicationUser"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CertificatesType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete entity from Certificates",
+        "tags": [
+          "Certificates"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Certificates/{Key}/CommunicationUser": {
+      "parameters": [
+        {
+          "name": "Key",
+          "in": "path",
+          "required": true,
+          "description": "Communication User Certificate Key",
+          "schema": {
+            "type": "string",
+            "maxLength": 80
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get related CommunicationUser",
+        "tags": [
+          "Certificates",
+          "Communication Users"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "Name",
+                  "Type",
+                  "Description",
+                  "IsLocked",
+                  "LockStatus",
+                  "Password",
+                  "PasswordStatus",
+                  "ChangedAt",
+                  "ChangedBy",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "Certificates"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CommunicationUsersType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/CommunicationUsers": {
+      "get": {
+        "summary": "Get entities from CommunicationUsers",
+        "tags": [
+          "Communication Users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "ID desc",
+                  "Name",
+                  "Name desc",
+                  "Description",
+                  "Description desc",
+                  "IsLocked",
+                  "IsLocked desc",
+                  "LockStatus",
+                  "LockStatus desc",
+                  "Password",
+                  "Password desc",
+                  "ChangedAt",
+                  "ChangedAt desc",
+                  "ChangedBy",
+                  "ChangedBy desc",
+                  "SAP__Messages",
+                  "SAP__Messages desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "Name",
+                  "Type",
+                  "Description",
+                  "IsLocked",
+                  "LockStatus",
+                  "Password",
+                  "PasswordStatus",
+                  "ChangedAt",
+                  "ChangedBy",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "Certificates"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of CommunicationUsersType",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CommunicationUsersType"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add new entity to CommunicationUsers",
+        "tags": [
+          "Communication Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CommunicationUsersType-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CommunicationUsersType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/CommunicationUsers/{ID}": {
+      "parameters": [
+        {
+          "name": "ID",
+          "in": "path",
+          "required": true,
+          "description": "Communication User ID",
+          "schema": {
+            "type": "string",
+            "maxLength": 12
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get entity from CommunicationUsers by key",
+        "tags": [
+          "Communication Users"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ID",
+                  "Name",
+                  "Type",
+                  "Description",
+                  "IsLocked",
+                  "LockStatus",
+                  "Password",
+                  "PasswordStatus",
+                  "ChangedAt",
+                  "ChangedBy",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "Certificates"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CommunicationUsersType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update entity in CommunicationUsers",
+        "tags": [
+          "Communication Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CommunicationUsersType-update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete entity from CommunicationUsers",
+        "tags": [
+          "Communication Users"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/CommunicationUsers/{ID}/Certificates": {
+      "parameters": [
+        {
+          "name": "ID",
+          "in": "path",
+          "required": true,
+          "description": "Communication User ID",
+          "schema": {
+            "type": "string",
+            "maxLength": 12
+          }
+        }
+      ],
+      "get": {
+        "summary": "Get entities from related Certificates",
+        "tags": [
+          "Communication Users",
+          "Certificates"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Key",
+                  "Key desc",
+                  "CommunicationUserID",
+                  "CommunicationUserID desc",
+                  "PublicKeyBase64",
+                  "PublicKeyBase64 desc",
+                  "SAP__Messages",
+                  "SAP__Messages desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Key",
+                  "CommunicationUserID",
+                  "Subject",
+                  "Issuer",
+                  "PublicKeyBase64",
+                  "SAP__Messages"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "*",
+                  "CommunicationUser"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of CertificatesType",
+                  "type": "object",
+                  "properties": {
+                    "@odata.count": {
+                      "$ref": "#/components/schemas/count"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CertificatesType"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add new entity to related Certificates",
+        "tags": [
+          "Communication Users",
+          "Certificates"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CertificatesType-create"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CertificatesType"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/$batch": {
+      "post": {
+        "summary": "Send a group of requests",
+        "description": "Group multiple requests into a single request payload, see [Batch Requests](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BatchRequests).\n\n*Please note that \"Try it out\" is not supported for this request.*",
+        "tags": [
+          "Batch Requests"
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Batch request",
+          "content": {
+            "multipart/mixed;boundary=request-separator": {
+              "schema": {
+                "type": "string"
+              },
+              "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET Certificates HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Batch response",
+            "content": {
+              "multipart/mixed": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "--response-separator\nContent-Type: application/http\n\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{...}\n--response-separator--"
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CommunicationUsersType": {
+        "type": "object",
+        "properties": {
+          "ID": {
+            "type": "string",
+            "maxLength": 12,
+            "title": "Communication User ID",
+            "description": "Communication User ID"
+          },
+          "Name": {
+            "type": "string",
+            "maxLength": 241,
+            "title": "Communication User Name",
+            "description": "Communication User Name"
+          },
+          "Type": {
+            "type": "string",
+            "maxLength": 30,
+            "title": "Communication User Type",
+            "description": "Communication User Type"
+          },
+          "Description": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Communication User Description",
+            "description": "Communication User Description"
+          },
+          "IsLocked": {
+            "type": "boolean",
+            "title": "Locked",
+            "description": "Locked"
+          },
+          "LockStatus": {
+            "type": "string",
+            "maxLength": 22,
+            "title": "Lock Status",
+            "description": "Lock Status"
+          },
+          "Password": {
+            "type": "string",
+            "maxLength": 40,
+            "title": "Communication User Password",
+            "description": "Communication User Password"
+          },
+          "PasswordStatus": {
+            "type": "string",
+            "maxLength": 20,
+            "title": "Communication User Password Status",
+            "description": "Communication User Password Status"
+          },
+          "ChangedAt": {
+            "type": "string",
+            "nullable": true,
+            "format": "date-time",
+            "example": "2017-04-13T15:51:04Z",
+            "title": "Changed DateTime",
+            "description": "Changed DateTime"
+          },
+          "ChangedBy": {
+            "type": "string",
+            "maxLength": 12,
+            "title": "Changed By User ID",
+            "description": "Changed by User ID"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.SAP__Message"
+            }
+          },
+          "Certificates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CertificatesType"
+            }
+          }
+        },
+        "title": "Communication Users"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CommunicationUsersType-create": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "maxLength": 241,
+            "title": "Communication User Name",
+            "description": "Communication User Name"
+          },
+          "Type": {
+            "type": "string",
+            "maxLength": 30,
+            "title": "Communication User Type",
+            "description": "Communication User Type"
+          },
+          "Description": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Communication User Description",
+            "description": "Communication User Description"
+          },
+          "IsLocked": {
+            "type": "boolean",
+            "title": "Locked",
+            "description": "Locked"
+          },
+          "Password": {
+            "type": "string",
+            "maxLength": 40,
+            "title": "Communication User Password",
+            "description": "Communication User Password"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.SAP__Message-create"
+            }
+          },
+          "Certificates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CertificatesType-create"
+            }
+          }
+        },
+        "title": "Communication Users (for create)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CommunicationUsersType-update": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "maxLength": 241,
+            "title": "Communication User Name",
+            "description": "Communication User Name"
+          },
+          "Description": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Communication User Description",
+            "description": "Communication User Description"
+          },
+          "IsLocked": {
+            "type": "boolean",
+            "title": "Locked",
+            "description": "Locked"
+          },
+          "Password": {
+            "type": "string",
+            "maxLength": 40,
+            "title": "Communication User Password",
+            "description": "Communication User Password"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.SAP__Message-update"
+            }
+          }
+        },
+        "title": "Communication Users (for update)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CertificatesType": {
+        "type": "object",
+        "properties": {
+          "Key": {
+            "type": "string",
+            "maxLength": 80,
+            "title": "Communication User Certificate Key",
+            "description": "Communication User Certificate Key"
+          },
+          "CommunicationUserID": {
+            "type": "string",
+            "maxLength": 12,
+            "title": "Communication User ID",
+            "description": "Communication User ID"
+          },
+          "Subject": {
+            "type": "string",
+            "title": "Certificate Subject",
+            "description": "Certificate Subject"
+          },
+          "Issuer": {
+            "type": "string",
+            "title": "Certificate Issuer",
+            "description": "Certificate Issuer"
+          },
+          "PublicKeyBase64": {
+            "type": "string",
+            "format": "base64url",
+            "title": "Certificate Public Key (Base64)",
+            "description": "Certificate Public Key (Base64)"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.SAP__Message"
+            }
+          },
+          "CommunicationUser": {
+            "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CommunicationUsersType"
+          }
+        },
+        "title": "Certificates"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CertificatesType-create": {
+        "type": "object",
+        "properties": {
+          "CommunicationUserID": {
+            "type": "string",
+            "maxLength": 12,
+            "title": "Communication User ID",
+            "description": "Communication User ID"
+          },
+          "Subject": {
+            "type": "string",
+            "title": "Certificate Subject",
+            "description": "Certificate Subject"
+          },
+          "Issuer": {
+            "type": "string",
+            "title": "Certificate Issuer",
+            "description": "Certificate Issuer"
+          },
+          "PublicKeyBase64": {
+            "type": "string",
+            "format": "base64url",
+            "title": "Certificate Public Key (Base64)",
+            "description": "Certificate Public Key (Base64)"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.SAP__Message-create"
+            }
+          },
+          "CommunicationUser": {
+            "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CommunicationUsersType-create"
+          }
+        },
+        "title": "Certificates (for create)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.CertificatesType-update": {
+        "type": "object",
+        "properties": {
+          "Subject": {
+            "type": "string",
+            "title": "Certificate Subject",
+            "description": "Certificate Subject"
+          },
+          "Issuer": {
+            "type": "string",
+            "title": "Certificate Issuer",
+            "description": "Certificate Issuer"
+          },
+          "PublicKeyBase64": {
+            "type": "string",
+            "format": "base64url",
+            "title": "Certificate Public Key (Base64)",
+            "description": "Certificate Public Key (Base64)"
+          },
+          "SAP__Messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.SAP__Message-update"
+            }
+          }
+        },
+        "title": "Certificates (for update)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.SAP__Message": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          },
+          "additionalTargets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "transition": {
+            "type": "boolean"
+          },
+          "numericSeverity": {
+            "type": "integer",
+            "format": "uint8"
+          },
+          "longtextUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "title": "SAP__Message"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.SAP__Message-create": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          },
+          "additionalTargets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "transition": {
+            "type": "boolean"
+          },
+          "numericSeverity": {
+            "type": "integer",
+            "format": "uint8"
+          },
+          "longtextUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "title": "SAP__Message (for create)"
+      },
+      "com.sap.gateway.srvd_a2x.aps_com_cu_a4c_odata.v0001.SAP__Message-update": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string",
+            "nullable": true
+          },
+          "additionalTargets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "transition": {
+            "type": "boolean"
+          },
+          "numericSeverity": {
+            "type": "integer",
+            "format": "uint8"
+          },
+          "longtextUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "title": "SAP__Message (for update)"
+      },
+      "count": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+      },
+      "error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "innererror": {
+                "type": "object",
+                "description": "The structure of this object is service-specific"
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "count": {
+        "name": "$count",
+        "in": "query",
+        "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "search": {
+        "name": "$search",
+        "in": "query",
+        "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "BasicAuth": []
+    }
+  ]
+}

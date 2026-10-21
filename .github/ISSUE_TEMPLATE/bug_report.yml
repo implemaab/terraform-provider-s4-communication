@@ -1,0 +1,89 @@
+name: 🐞 Bug report
+description: Report a bug in the provider or in s4export
+title: "[BUG] "
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include credentials, certificates, keys or host names of real systems.
+        Security issues must be reported privately, see SECURITY.md.
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      description: Please search to see if an issue already exists for the bug you encountered.
+      options:
+        - label: I have searched the existing issues
+          required: true
+  - type: input
+    attributes:
+      label: Provider version or commit
+      description: The provider version, or the commit you built it from.
+      placeholder: 0.2.0 or b909f51
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Terraform CLI version
+      description: The output of `terraform version`.
+      placeholder: 1.16.6
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - communication system / inbound or outbound user
+        - communication user
+        - communication arrangement
+        - provider configuration / authentication
+        - import / terraform query
+        - s4export
+        - documentation
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What type of issue are you facing?
+      options:
+        - bug report
+        - documentation issue
+        - regression (a behavior that used to work and stopped in a new version)
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is, including the error message.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: What you expected to happen.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: The minimal configuration and commands that reproduce the behavior.
+      placeholder: |
+        1. `terraform apply` with the following configuration:
+
+        ```hcl
+        <!-- configuration goes here -->
+        ```
+        2. ...
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Debug output
+      description: |
+        Relevant lines from a run with `TF_LOG=DEBUG`. Credentials are never logged, but
+        remove system-specific data before posting.
+      render: shell
+    validations:
+      required: false
