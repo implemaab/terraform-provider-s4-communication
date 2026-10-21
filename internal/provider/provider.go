@@ -14,12 +14,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
-	"terraform-provider-s4-communication/internal/service/communicationarrangement"
-	"terraform-provider-s4-communication/internal/service/communicationsystem"
-	"terraform-provider-s4-communication/internal/service/communicationuser"
-	"terraform-provider-s4-communication/internal/service/inbounduser"
-	"terraform-provider-s4-communication/internal/service/outbounduser"
-	s4types "terraform-provider-s4-communication/internal/types"
+	"terraform-provider-s4communication/internal/service/communicationarrangement"
+	"terraform-provider-s4communication/internal/service/communicationsystem"
+	"terraform-provider-s4communication/internal/service/communicationuser"
+	"terraform-provider-s4communication/internal/service/inbounduser"
+	"terraform-provider-s4communication/internal/service/outbounduser"
+	s4types "terraform-provider-s4communication/internal/types"
 )
 
 // Ensure S4CommunicationProvider satisfies various provider interfaces.

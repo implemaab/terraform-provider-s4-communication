@@ -28,8 +28,8 @@ The arrangement shows the API host to use, for example `my000000-api.s4hana.clou
 Clone the repository and install the provider binary into `$(go env GOPATH)/bin`:
 
 ```bash
-git clone https://github.com/implemaab/terraform-provider-s4-communication.git
-cd terraform-provider-s4-communication
+git clone https://github.com/implemaab/terraform-provider-s4communication.git
+cd terraform-provider-s4communication
 make install
 ```
 

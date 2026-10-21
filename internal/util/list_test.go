@@ -3,7 +3,7 @@ package util
 import (
 	"testing"
 
-	s4types "terraform-provider-s4-communication/internal/types"
+	s4types "terraform-provider-s4communication/internal/types"
 )
 
 func TestNextEndpoint(t *testing.T) {

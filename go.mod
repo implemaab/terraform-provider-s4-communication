@@ -1,4 +1,4 @@
-module terraform-provider-s4-communication
+module terraform-provider-s4communication
 
 go 1.25.8
 

@@ -8,9 +8,9 @@ import (
 	"strings"
 	"testing"
 
-	"terraform-provider-s4-communication/internal/acctest/sapmock"
-	s4types "terraform-provider-s4-communication/internal/types"
-	"terraform-provider-s4-communication/internal/util"
+	"terraform-provider-s4communication/internal/acctest/sapmock"
+	s4types "terraform-provider-s4communication/internal/types"
+	"terraform-provider-s4communication/internal/util"
 )
 
 func runWithArgs(t *testing.T, args ...string) error {

@@ -17,8 +17,8 @@ import (
 	"regexp"
 	"sort"
 
-	"terraform-provider-s4-communication/internal/exporter"
-	s4types "terraform-provider-s4-communication/internal/types"
+	"terraform-provider-s4communication/internal/exporter"
+	s4types "terraform-provider-s4communication/internal/types"
 )
 
 func main() {

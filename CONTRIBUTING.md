@@ -5,12 +5,12 @@
 You are welcome to contribute code, documentation, examples and bug reports to this project.
 
 1. By contributing, you agree that your contributions are licensed under the project's [license](LICENSE), the MIT License.
-2. **Discuss larger changes first.** Bug fixes are always welcome. For a new resource, a new attribute group or a change in behaviour, please open a [feature request](https://github.com/implemaab/terraform-provider-s4-communication/issues/new?template=feature_request.yml) first, and say that you intend to implement it. That avoids work that does not fit the direction of the project.
+2. **Discuss larger changes first.** Bug fixes are always welcome. For a new resource, a new attribute group or a change in behaviour, please open a [feature request](https://github.com/implemaab/terraform-provider-s4communication/issues/new?template=feature_request.yml) first, and say that you intend to implement it. That avoids work that does not fit the direction of the project.
 3. **Never include credentials** in issues, pull requests, examples or test data. This includes host names of real systems, passwords, certificates and keys.
 
 ## Reporting Bugs
 
-Open a [bug report](https://github.com/implemaab/terraform-provider-s4-communication/issues/new?template=bug_report.yml) with:
+Open a [bug report](https://github.com/implemaab/terraform-provider-s4communication/issues/new?template=bug_report.yml) with:
 - the provider and Terraform versions;
 - a minimal configuration that reproduces the problem;
 - the error message.

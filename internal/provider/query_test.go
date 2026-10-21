@@ -10,8 +10,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-testing/tfjsonpath"
 	"github.com/hashicorp/terraform-plugin-testing/tfversion"
 
-	"terraform-provider-s4-communication/internal/acctest/sapmock"
-	s4types "terraform-provider-s4-communication/internal/types"
+	"terraform-provider-s4communication/internal/acctest/sapmock"
+	s4types "terraform-provider-s4communication/internal/types"
 )
 
 // The objects created by seedExportData, by their keys in the mock

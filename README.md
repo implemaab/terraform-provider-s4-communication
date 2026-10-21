@@ -1,6 +1,6 @@
 ![Golang](https://img.shields.io/badge/Go-1.25-informational)
 ![Terraform](https://img.shields.io/badge/Terraform-%3E%3D1.0-informational)
-[![Tests](https://github.com/implemaab/terraform-provider-s4-communication/actions/workflows/test.yml/badge.svg)](https://github.com/implemaab/terraform-provider-s4-communication/actions/workflows/test.yml)
+[![Tests](https://github.com/implemaab/terraform-provider-s4communication/actions/workflows/test.yml/badge.svg)](https://github.com/implemaab/terraform-provider-s4communication/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 # Terraform Provider for SAP S/4HANA Cloud Communication Management
@@ -80,9 +80,9 @@ make export     # export the system in S4_HOST to ./exported with s4export
 
 ## Support, Feedback, Contributing
 
-🐞 - If you find a bug, please create a [bug report](https://github.com/implemaab/terraform-provider-s4-communication/issues/new?template=bug_report.yml).
+🐞 - If you find a bug, please create a [bug report](https://github.com/implemaab/terraform-provider-s4communication/issues/new?template=bug_report.yml).
 
-💡 - If you have an idea for improvement or a feature request, please open a [feature request](https://github.com/implemaab/terraform-provider-s4-communication/issues/new?template=feature_request.yml).
+💡 - If you have an idea for improvement or a feature request, please open a [feature request](https://github.com/implemaab/terraform-provider-s4communication/issues/new?template=feature_request.yml).
 
 > **Note**: If you believe you have found a security issue, please do not open a public issue. See the [security policy](SECURITY.md) for how to report it.
 

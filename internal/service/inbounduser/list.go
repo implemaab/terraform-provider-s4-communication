@@ -9,8 +9,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
-	s4types "terraform-provider-s4-communication/internal/types"
-	"terraform-provider-s4-communication/internal/util"
+	s4types "terraform-provider-s4communication/internal/types"
+	"terraform-provider-s4communication/internal/util"
 )
 
 var _ list.ListResourceWithConfigure = &InboundUserListResource{}

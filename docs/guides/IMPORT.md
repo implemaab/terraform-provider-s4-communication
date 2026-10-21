@@ -98,7 +98,7 @@ The generated configuration contains every attribute, including `false` and `0` 
 `s4export` exports a whole system in one step. It writes configuration in which resources refer to each other (for example an inbound user to `s4communication_communication_system.<name>.id`), leaves out values that are empty in SAP, and adds import blocks.
 
 ```bash
-cd terraform-provider-s4-communication
+cd terraform-provider-s4communication
 export S4_HOST=my000000-api.s4hana.cloud.sap S4_USERNAME=... S4_PASSWORD=...
 # or: export S4_CLIENT_CERTIFICATE=user.crt S4_CLIENT_KEY=user.key
 go run ./cmd/s4export -out ../exported      # or: make export

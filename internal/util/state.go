@@ -20,7 +20,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
-	s4types "terraform-provider-s4-communication/internal/types"
+	s4types "terraform-provider-s4communication/internal/types"
 )
 
 type apiField struct {

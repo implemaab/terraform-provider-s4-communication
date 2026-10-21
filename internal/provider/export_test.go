@@ -12,10 +12,10 @@ import (
 	"github.com/hashicorp/terraform-plugin-testing/plancheck"
 	"github.com/hashicorp/terraform-plugin-testing/terraform"
 
-	"terraform-provider-s4-communication/internal/acctest/sapmock"
-	"terraform-provider-s4-communication/internal/exporter"
-	s4types "terraform-provider-s4-communication/internal/types"
-	"terraform-provider-s4-communication/internal/util"
+	"terraform-provider-s4communication/internal/acctest/sapmock"
+	"terraform-provider-s4communication/internal/exporter"
+	s4types "terraform-provider-s4communication/internal/types"
+	"terraform-provider-s4communication/internal/util"
 )
 
 // seedExportData creates objects in the mock directly through the API, the

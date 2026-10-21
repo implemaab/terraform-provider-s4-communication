@@ -10,7 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-testing/plancheck"
 	"github.com/hashicorp/terraform-plugin-testing/terraform"
 
-	"terraform-provider-s4-communication/internal/acctest/sapmock"
+	"terraform-provider-s4communication/internal/acctest/sapmock"
 )
 
 // These tests run the provider through Terraform against the in-memory SAP

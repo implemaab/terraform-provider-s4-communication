@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"terraform-provider-s4-communication/internal/acctest/sapmock"
+	"terraform-provider-s4communication/internal/acctest/sapmock"
 )
 
 func TestServiceBaseURL(t *testing.T) {

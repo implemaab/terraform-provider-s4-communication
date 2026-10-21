@@ -4,7 +4,7 @@
 
 Please do **not** report security vulnerabilities through public GitHub issues, discussions or pull requests.
 
-Report them privately through GitHub's [private vulnerability reporting](https://github.com/implemaab/terraform-provider-s4-communication/security/advisories/new) for this repository. Include:
+Report them privately through GitHub's [private vulnerability reporting](https://github.com/implemaab/terraform-provider-s4communication/security/advisories/new) for this repository. Include:
 
 - a description of the issue and its impact;
 - the steps or configuration needed to reproduce it;

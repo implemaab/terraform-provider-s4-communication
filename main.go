@@ -6,7 +6,7 @@ import (
 	"log"
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
-	"terraform-provider-s4-communication/internal/provider"
+	"terraform-provider-s4communication/internal/provider"
 )
 
 //go:generate terraform fmt -recursive ./docs/examples/

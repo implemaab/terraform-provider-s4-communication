@@ -10,7 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
-	"terraform-provider-s4-communication/internal/util"
+	"terraform-provider-s4communication/internal/util"
 )
 
 // The services of an arrangement are created by SAP from the communication

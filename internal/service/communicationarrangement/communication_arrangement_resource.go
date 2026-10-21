@@ -12,8 +12,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 
-	s4types "terraform-provider-s4-communication/internal/types"
-	"terraform-provider-s4-communication/internal/util"
+	s4types "terraform-provider-s4communication/internal/types"
+	"terraform-provider-s4communication/internal/util"
 )
 
 const service = s4types.ServiceCommunicationArrangement

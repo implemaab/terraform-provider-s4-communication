@@ -9,7 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
-	s4types "terraform-provider-s4-communication/internal/types"
+	s4types "terraform-provider-s4communication/internal/types"
 )
 
 // IdentityModel is the resource identity of every resource: the key SAP

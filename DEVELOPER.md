@@ -11,8 +11,8 @@ This guide describes how to build, test and change the provider. To use the prov
 ## Clone and Build
 
 ```bash
-git clone https://github.com/implemaab/terraform-provider-s4-communication.git
-cd terraform-provider-s4-communication
+git clone https://github.com/implemaab/terraform-provider-s4communication.git
+cd terraform-provider-s4communication
 
 make build     # builds ./terraform-provider-s4communication(.exe)
 make install   # installs it into $(go env GOPATH)/bin
@@ -44,7 +44,7 @@ cd docs/examples/provider && terraform validate
 ## Project Structure
 
 ```
-terraform-provider-s4-communication/
+terraform-provider-s4communication/
 ├── main.go                      # provider server entry point, go:generate for docs
 ├── cmd/s4export/                # s4export command
 ├── internal/

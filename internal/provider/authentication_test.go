@@ -12,7 +12,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-go/tfprotov6"
 	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
 
-	"terraform-provider-s4-communication/internal/acctest/sapmock"
+	"terraform-provider-s4communication/internal/acctest/sapmock"
 )
 
 // tlsProviderFactories returns provider factories that trust the server

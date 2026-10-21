@@ -10,7 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/list"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 
-	s4types "terraform-provider-s4-communication/internal/types"
+	s4types "terraform-provider-s4communication/internal/types"
 )
 
 // ListAll reads every page of an entity set.
