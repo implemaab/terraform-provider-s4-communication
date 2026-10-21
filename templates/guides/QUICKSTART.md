@@ -42,7 +42,7 @@ provider_installation {
   dev_overrides {
     # The directory that contains terraform-provider-s4communication,
     # i.e. the output of: go env GOPATH, followed by /bin
-    "sap-community/s4communication" = "/home/<you>/go/bin"
+    "implemaab/s4communication" = "/home/<you>/go/bin"
   }
 
   # All other providers are installed from the registry as usual
@@ -90,7 +90,7 @@ Create a new directory with a file `main.tf`. This example creates a communicati
 terraform {
   required_providers {
     s4communication = {
-      source = "sap-community/s4communication"
+      source = "implemaab/s4communication"
     }
   }
 }

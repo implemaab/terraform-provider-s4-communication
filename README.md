@@ -29,7 +29,7 @@ Refer to the [Quick Start Guide](docs/guides/QUICKSTART.md) for setting up SAP S
 terraform {
   required_providers {
     s4communication = {
-      source = "sap-community/s4communication"
+      source = "implemaab/s4communication"
     }
   }
 }

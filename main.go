@@ -28,7 +28,7 @@ func main() {
 	flag.Parse()
 
 	opts := providerserver.ServeOpts{
-		Address: "registry.terraform.io/sap-community/s4communication",
+		Address: "registry.terraform.io/implemaab/s4communication",
 		Debug:   debug,
 	}
 

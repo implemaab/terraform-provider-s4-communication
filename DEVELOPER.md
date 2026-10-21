@@ -26,7 +26,7 @@ Point Terraform at your local build with a `dev_overrides` block in your Terrafo
 provider_installation {
   dev_overrides {
     # The directory containing the provider binary, e.g. $(go env GOPATH)/bin
-    "sap-community/s4communication" = "/home/you/go/bin"
+    "implemaab/s4communication" = "/home/you/go/bin"
   }
   direct {}
 }
@@ -129,7 +129,7 @@ Never edit `docs/` by hand. Regenerate it whenever you change a schema descripti
 
 Every resource has a resource identity with one attribute, `id`: the same key as its `id` attribute and import ID (`util.IdentitySchema`, `util.SetIdentity`). The list resources in each `list.go` use `util.ListAll` to read the entity set and `util.ListResults` to stream the results. When Terraform asks for the full resource, they build it with the same mapping as Read, and for arrangements with the same `importServices` snapshot as import. That way `terraform query -generate-config-out` produces configuration that imports without changes.
 
-The provider's type name in its registry address (`sap-community/s4communication`) must match the `s4communication_` resource prefix. Terraform writes it into generated configuration as the `provider` of each resource.
+The provider's type name in its registry address (`implemaab/s4communication`) must match the `s4communication_` resource prefix. Terraform writes it into generated configuration as the `provider` of each resource.
 
 ## Exporter
 

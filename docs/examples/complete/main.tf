@@ -4,7 +4,7 @@
 terraform {
   required_providers {
     s4communication = {
-      source = "sap-community/s4communication"
+      source = "implemaab/s4communication"
     }
   }
 }

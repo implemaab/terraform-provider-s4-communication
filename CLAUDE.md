@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Terraform provider for SAP S/4HANA Cloud communication management, built with the Terraform Plugin Framework. Registry address `sap-community/s4communication`, resource prefix `s4communication_`. It manages communication systems (with inbound and outbound users), communication users and communication arrangements through SAP's OData V4 APIs. It also ships `s4export`, which exports an existing system as Terraform configuration.
+Terraform provider for SAP S/4HANA Cloud communication management, built with the Terraform Plugin Framework. Registry address `implemaab/s4communication`, resource prefix `s4communication_`. It manages communication systems (with inbound and outbound users), communication users and communication arrangements through SAP's OData V4 APIs. It also ships `s4export`, which exports an existing system as Terraform configuration.
 
 The Go module is at the repository root. `docs/api/` holds SAP's OpenAPI definitions (`sap-s4-CE_APS_COM_*_ODATA_0001-v1.json`), the reference for property names and update rules, and a Bruno collection in `SAP API/`.
 

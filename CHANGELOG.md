@@ -1,13 +1,13 @@
 # Changelog
 
-## 1.0.0
+## 0.1.1
 
 First public release of the Terraform provider for SAP S/4HANA Cloud
 Communication Management.
 
 ### Provider
 
-- Provider address `sap-community/s4communication`, configured with `host`,
+- Provider address `implemaab/s4communication`, configured with `host`,
   `username` and `password`, or the `S4_HOST`, `S4_USERNAME` and `S4_PASSWORD`
   environment variables. The provider connects over HTTPS on port 443.
 - Authentication with the communication user's X.509 client certificate
